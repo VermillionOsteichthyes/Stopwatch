@@ -1,1 +1,1 @@
-download release and type random credentials 
+30k slow only kinda works
