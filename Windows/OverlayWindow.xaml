@@ -1,0 +1,151 @@
+﻿<Window x:Class="redfish.Windows.OverlayWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:redfish.Windows"
+		xmlns:controls="clr-namespace:redfish.Controls"
+		mc:Ignorable="d"
+		ShowInTaskbar="False"
+		ResizeMode="NoResize"
+		WindowStyle="None"
+		Background="Transparent"
+		AllowsTransparency="True"
+		x:Name="Win"
+		Title="">
+
+	<Window.Resources>
+		<!-- icons on overlay colour-->
+		<SolidColorBrush x:Key="ModuleBrush" Color="#EEFFFFFF"/>
+		<!-- text colour -->
+		<SolidColorBrush x:Key="Back" Color="#59C1232C"/>
+	</Window.Resources>
+
+	<Grid x:Name="Content" Width="2560" Height="1440">
+		<Grid.LayoutTransform>
+			<ScaleTransform x:Name="Scale" ScaleX="1" ScaleY="1"/>
+		</Grid.LayoutTransform>
+
+		<!-- Pincushion effect removed -->
+		<!--<Grid.Effect>
+			<local:PincushionEffect 
+		Width="{Binding Width, ElementName=Win, Converter={StaticResource Math}, ConverterParameter=x*4}"
+		Height="{Binding Height, ElementName=Win, Converter={StaticResource Math}, ConverterParameter=x*4}" 
+		Power="-0.31"/>
+		</Grid.Effect>-->
+
+		<!--PLACEHOLDER-->
+		<Line X1="0" X2="2560"
+			  Y1="0" Y2="1440" Stroke="#00000000"/>
+
+		<Grid x:Name="ModulesGrid"
+		  VerticalAlignment="Top"
+		  HorizontalAlignment="Left"
+		  Margin="0, 44, 0, 0">
+
+			<!-- Removed horizontal scale transform -->
+			<!--<Grid.RenderTransform>
+				<ScaleTransform ScaleX="1.22"/>
+			</Grid.RenderTransform>-->
+
+			<!--190-->
+			<Grid Height="42" Margin="42,-10,0,0">
+				<Border VerticalAlignment="Top" Height="42"
+					MinWidth="210">
+					<Border.Width>
+						<MultiBinding ConverterParameter="Min(x + 80, 480)" Converter="{StaticResource Math}">
+							<Binding Path="ActualWidth" ElementName="DisplayLine"/>
+						</MultiBinding>
+					</Border.Width>
+
+					<Border.Background>
+						<ImageBrush ImageSource="pack://application:,,,/Windows/Assets/overlay.png" Stretch="Fill" Opacity="0.25"/>
+						<!--<LinearGradientBrush>
+							--><!-- overlay bar (gradient from left to right)--><!--
+							<GradientStop Color="#59C1232C" Offset="0"></GradientStop>
+							<GradientStop Color="#59C1232C" Offset="0.65"></GradientStop>
+							<GradientStop Color="#59ffffff" Offset="0.95"></GradientStop>
+							<GradientStop Color="#00000000" Offset="1"></GradientStop>
+						</LinearGradientBrush>-->
+					</Border.Background>
+				</Border>
+
+				<StackPanel x:Name="DisplayLine" VerticalAlignment="Top" HorizontalAlignment="Left" 
+							Orientation="Horizontal">
+
+					<StackPanel x:Name="Modules" Height="42" MinWidth="255" MaxWidth="255"
+								Orientation="Horizontal" HorizontalAlignment="Left">
+						<StackPanel.Resources>
+							<Style TargetType="controls:EnabledModuleTimer">
+								<Setter Property="Margin" Value="0,2,3,4"/>
+								<Setter Property="VerticalAlignment" Value="Center"/>
+								<Setter Property="Foreground" Value="{StaticResource ModuleBrush}"/>
+								<Setter Property="MinOpacity" Value="1.0"/>
+								<Setter Property="Scale" Value="0.74"/>
+							</Style>
+						</StackPanel.Resources>
+					</StackPanel>
+
+					<StackPanel Name="Counters" Height="43" Orientation="Horizontal">
+						<StackPanel.Resources>
+							<Style TargetType="Path">
+								<Setter Property="VerticalAlignment" Value="Center"/>
+								<Setter Property="Stretch" Value="Uniform"/>
+								<Setter Property="Margin" Value="0,2,4,2"/>
+								<Setter Property="Height" Value="39"/>
+								<Setter Property="Width" Value="39"/>
+								<Setter Property="Fill">
+									<Setter.Value>
+										<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+											<GradientStop Color="#59C1232C" Offset="0"/>
+											<GradientStop Color="#59C1232C" Offset="0.65"/>
+											<GradientStop Color="#ffffff" Offset="0.95"/>
+											<GradientStop Color="#ffffff" Offset="1"/>
+										</LinearGradientBrush>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</StackPanel.Resources>
+
+						<Label Name="Timer" Content="00:00:00" MinWidth="120" MaxWidth="120" Visibility="Collapsed"
+							   FontSize="30" FontFamily="{StaticResource SmallTitleFont}" FontWeight="ExtraBold"
+							   HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+							   Foreground="{StaticResource ModuleBrush}">
+							<!-- Removed scale transform -->
+							<!--<Label.LayoutTransform>
+								<ScaleTransform ScaleX="0.96"/>
+							</Label.LayoutTransform>-->
+						</Label>
+
+						<Grid x:Name="Raid" Visibility="Collapsed" Margin="7,0,0,0">
+							<!--<Path Data="M128 32c8.8 0 16 7.2 16 16V297.8l96-32V48c0-8.8 7.2-16 16-16s16 7.2 16 16V255.1l96-32V48c0-8.8 7.2-16 16-16s16 7.2 16 16V212.5l96-32V48c0-8.8 7.2-16 16-16s16 7.2 16 16V169.8l74.9-25c8.4-2.8 17.4 1.7 20.2 10.1s-1.7 17.4-10.1 20.2L528 203.5V464c0 8.8-7.2 16-16 16s-16-7.2-16-16V214.2l-96 32V464c0 8.8-7.2 16-16 16s-16-7.2-16-16V256.9l-96 32V464c0 8.8-7.2 16-16 16s-16-7.2-16-16V299.5l-96 32V464c0 8.8-7.2 16-16 16s-16-7.2-16-16V342.2l-74.9 25c-8.4 2.8-17.4-1.7-20.2-10.1s1.7-17.4 10.1-20.2L112 308.5V48c0-8.8 7.2-16 16-16z"
+								  Margin="0,4,0,4"
+								  Height="36" Width="36" Stretch="Uniform"
+								  VerticalAlignment="Center" Fill="#55FFFFFF">
+							</Path>-->
+
+							<!--<Grid.Effect>
+								<DropShadowEffect ShadowDepth="0" Color="Black" BlurRadius="2" Opacity="0.6"/>
+							</Grid.Effect>-->
+
+							<Ellipse Width="7" Height="7" Fill="#ff67c06b"
+									 HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+							<Label x:Name="RaidLabel" Foreground="{StaticResource ModuleBrush}" Content="0"
+								   FontFamily="{StaticResource SmallTitleFont}" FontSize="24"
+								   VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="7,2,-4,0"
+								   VerticalAlignment="Center" HorizontalAlignment="Right">
+								<!-- Removed scale transform -->
+								<!--<Label.LayoutTransform>
+									<ScaleTransform ScaleX="0.96"/>
+								</Label.LayoutTransform>-->
+							</Label>
+						</Grid>
+
+					</StackPanel>
+				</StackPanel>
+
+			</Grid>
+		</Grid>
+	</Grid>
+</Window>

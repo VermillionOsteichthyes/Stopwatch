@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="redfish.Controls.Switch"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:redfish.Controls"
+             xmlns:c="clr-namespace:redfish.Windows.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="60">
+    <Grid>
+        <!-- Stadium-shaped background -->
+        <Border x:Name="SwitchBackground" 
+            MouseEnter="Switch_MouseEnter" MouseLeave="Switch_MouseLeave" MouseDown="Switch_MouseDown" 
+            CornerRadius="{Binding ActualHeight, ConverterParameter=x/2, Converter={StaticResource Math}}" 
+            Background="{StaticResource LightBackColor}"
+            BorderBrush="{StaticResource AccentColor}" BorderThickness="2"
+            Opacity="0.7"/>
+
+        <!-- Option labels -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Option A label -->
+            <TextBlock x:Name="OptionALabel" 
+                      Grid.Column="0" 
+                      Text="A"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      FontWeight="Bold"
+                      FontSize="12"
+                      Foreground="{StaticResource AccentColor}"
+                      IsHitTestVisible="False"/>
+
+            <!-- Option B label -->
+            <TextBlock x:Name="OptionBLabel" 
+                      Grid.Column="1" 
+                      Text="B"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      FontWeight="Bold"
+                      FontSize="12"
+                      Foreground="{StaticResource AccentColor}"
+                      Opacity="0.5"
+                      IsHitTestVisible="False"/>
+        </Grid>
+
+        <!-- Sliding circle -->
+        <Grid>
+            <Ellipse x:Name="SlidingCircle"
+                    Fill="{StaticResource AccentColor}"
+                    Width="{Binding ActualHeight, ElementName=SwitchBackground, ConverterParameter=x-6, Converter={StaticResource Math}}" 
+                    Height="{Binding ActualHeight, ElementName=SwitchBackground, ConverterParameter=x-6, Converter={StaticResource Math}}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="3,0,0,0"
+                    IsHitTestVisible="False">
+                <Ellipse.Effect>
+                    <DropShadowEffect ShadowDepth="0" Color="White" BlurRadius="4" Opacity="0.8"/>
+                </Ellipse.Effect>
+            </Ellipse>
+        </Grid>
+    </Grid>
+</UserControl>

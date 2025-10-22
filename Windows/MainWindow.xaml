@@ -1,0 +1,496 @@
+﻿<Window
+	x:Class="redfish.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:controls="clr-namespace:redfish.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:redfish"
+	xmlns:sys="clr-namespace:System;assembly=mscorlib"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:tb="http://www.hardcodet.net/taskbar"
+	xmlns:hc="https://handyorg.github.io/handycontrol"
+	Style="{StaticResource TransparentWindow}"
+	SizeToContent="WidthAndHeight"
+	mc:Ignorable="d">
+
+	<!-- backgorund stuff -->
+	<Window.Resources>
+		<Geometry x:Key="Speaker">
+			M13.0355 8.5211C13.4261 8.1306 14.0674 8.1267 14.3881 8.5764 15.0882 9.5579 15.5 10.7592 15.5 12.0567 15.5 13.3541 15.0882 14.5554 14.3881 15.537 14.0674 15.9866 13.4261 15.9827 13.0355 15.5922 12.645 15.2017 12.6586 14.5725 12.9408 14.0978 13.296 13.5002 13.5 12.8023 13.5 12.0567 13.5 11.3111 13.296 10.6131 12.9408 10.0156 12.6586 9.5408 12.645 8.9116 13.0355 8.5211M15.864 5.6932C16.2545 5.3026 16.8921 5.2998 17.2419 5.7271 18.6532 7.4512 19.5 9.6553 19.5 12.0571 19.5 14.459 18.6532 16.6631 17.2419 18.3871 16.8921 18.8145 16.2545 18.8116 15.864 18.4211 15.4734 18.0306 15.4792 17.4007 15.8183 16.9648 16.8723 15.6098 17.5 13.9068 17.5 12.0571 17.5 10.2075 16.8723 8.5045 15.8183 7.1494 15.4792 6.7135 15.4734 6.0837 15.864 5.6932M11 16.5858V7.4142C11 6.5233 9.9229 6.0771 9.2929 6.7071L7.2929 8.7071C7.1054 8.8946 6.851 9 6.5858 9H5C4.4477 9 4 9.4477 4 10V14C4 14.5523 4.4477 15 5 15H6.5858C6.851 15 7.1054 15.1054 7.2929 15.2929L9.2929 17.2929C9.9229 17.9229 11 17.4767 11 16.5858Z
+		</Geometry>
+		<Geometry x:Key="Pin">
+			M 12.956 18.956 L 9 15 l -3.956 -3.956 a 1 1 0 0 1 0.314 -1.626 l 5.261 -2.255 a 1 1 0 0 0 0.535 -0.548 l 1.283 -3.207 a 1 1 0 0 1 1.635 -0.336 l 6.856 6.856 a 1 1 0 0 1 -0.336 1.635 l -3.207 1.283 a 1 1 0 0 0 -0.548 0.535 l -2.255 5.261 a 1 1 0 0 1 -1.626 0.314 M 8 14 L 5 18 Q 3 21 6 19 L 10 16
+		</Geometry>
+		<Geometry x:Key="4Sqaure">
+			m 33.14016,184.13096 c -3.225361,-0.77069 -6.301088,-3.35057 -7.842536,-6.57823 -0.955957,-2.00169 -0.955957,-2.00169 -0.955957,-28.06315 0,-26.06145 0,-26.06145 0.955957,-28.06315 1.260754,-2.63991 3.133693,-4.51284 5.773602,-5.7736 2.001691,-0.95595 2.001691,-0.95595 28.460025,-0.95595 26.458333,0 26.458333,0 28.460024,0.95595 2.639909,1.26076 4.512848,3.13369 5.773602,5.7736 0.955957,2.0017 0.955957,2.0017 1.028544,27.37012 0.07904,27.62426 0.113328,26.90409 -1.410229,29.62148 -1.119209,1.9962 -3.133298,3.82964 -5.391917,4.9083 -2.001691,0.95596 -2.001691,0.95596 -27.930858,0.9987 -14.514887,0.0239 -26.365454,-0.0615 -26.920257,-0.19407 z m 85.725,0 c -3.22536,-0.77069 -6.30109,-3.35057 -7.84254,-6.57823 -0.95595,-2.00169 -0.95595,-2.00169 -0.95595,-28.06315 0,-26.06145 0,-26.06145 0.95595,-28.06315 1.26076,-2.63991 3.1337,-4.51284 5.77361,-5.7736 2.00169,-0.95595 2.00169,-0.95595 28.46002,-0.95595 26.45833,0 26.45833,0 28.46002,0.95595 2.63991,1.26076 4.51285,3.13369 5.77361,5.7736 0.95595,2.0017 0.95595,2.0017 1.02854,27.37012 0.079,27.62426 0.11333,26.90409 -1.41023,29.62148 -1.11921,1.9962 -3.1333,3.82964 -5.39192,4.9083 -2.00169,0.95596 -2.00169,0.95596 -27.93085,0.9987 -14.51489,0.0239 -26.36546,-0.0615 -26.92026,-0.19407 z m -85.725,-78.58442 c -3.213077,-0.75747 -6.300296,-3.34574 -7.842536,-6.575057 -0.955957,-2.001691 -0.955957,-2.001691 -0.955957,-28.063149 0,-26.061457 0,-26.061457 0.955957,-28.063148 1.624873,-3.402344 4.615409,-5.820147 8.119046,-6.564125 1.971973,-0.418739 50.257188,-0.418739 52.229161,0 3.503637,0.743978 6.494173,3.161781 8.119046,6.564125 0.955957,2.001691 0.955957,2.001691 1.028544,27.370116 0.07904,27.624255 0.113328,26.90409 -1.410229,29.62148 -0.917833,1.637028 -2.891229,3.609988 -4.526618,4.525608 -2.69368,1.50813 -1.982315,1.47324 -29.447058,1.44437 -13.903046,-0.0146 -25.724256,-0.13172 -26.269356,-0.26022 z m 85.725,0 c -3.21308,-0.75747 -6.3003,-3.34574 -7.84254,-6.575057 -0.95595,-2.001691 -0.95595,-2.001691 -0.95595,-28.063149 0,-26.061457 0,-26.061457 0.95595,-28.063148 1.62488,-3.402344 4.61541,-5.820147 8.11905,-6.564125 1.97197,-0.418739 50.25719,-0.418739 52.22916,0 3.50364,0.743978 6.49417,3.161781 8.11905,6.564125 0.95595,2.001691 0.95595,2.001691 1.02854,27.370116 0.079,27.624255 0.11333,26.90409 -1.41023,29.62148 -0.91783,1.637028 -2.89123,3.609988 -4.52662,4.525608 -2.69368,1.50813 -1.98231,1.47324 -29.44705,1.44437 -13.90305,-0.0146 -25.72426,-0.13172 -26.26936,-0.26022 z
+		</Geometry>
+
+
+
+		<CollectionViewSource x:Key="ModulesViewSource" Source="{Binding DisplayModules}"/>
+
+		<!--SVG Background Resources-->
+		<!--<Geometry x:Key="BackgroundSvgPath">
+			m 117.11637,259.16959 c -0.25075,-0.43871 -0.64443,-5.45511 -0.87486,-11.14756 -0.44378,-10.96292 -0.52944,-11.86241 -2.43065,-25.52209 -1.31688,-9.46144 -1.74182,-10.32999 -5.05392,-10.32999 -3.00117,0 -5.13859,1.08832 -4.75592,2.4216 2.25622,7.86108 5.68249,32.46797 5.71498,41.04399 0.01,2.6218 -0.15337,3.0797 -1.03308,2.89671 -0.75519,-0.15709 -1.1612,-1.10998 -1.4644,-3.43687 -1.78743,-13.71725 -8.569025,-40.02529 -10.527003,-40.83773 -2.014433,-0.83587 -4.69098,-0.29472 -8.756909,1.7705 -2.298733,1.16759 -7.000688,3.50358 -10.448788,5.19107 -3.4481,1.6875 -16.27201,8.02908 -28.497577,14.0924 -21.982332,10.90223 -30.463074,14.6813 -31.836192,14.18637 -0.758478,-0.27338 4.702778,-4.34015 11.970807,-8.91417 2.462928,-1.55 7.030541,-4.49078 10.150251,-6.53506 3.11971,-2.04429 12.855693,-8.31174 21.635518,-13.92769 8.779825,-5.61594 15.967098,-10.57712 15.971719,-11.02485 0.0046,-0.44772 -1.469357,-1.59774 -3.275504,-2.55559 -2.159304,-1.14513 -3.283905,-2.13768 -3.283905,-2.89829 0,-0.81732 -0.458623,-1.15675 -1.562928,-1.15675 -1.025263,0 -2.378097,-0.88146 -3.932526,-2.56229 -2.819411,-3.04867 -2.762941,-4.07851 0.618088,-11.27219 1.754079,-3.73208 3.788504,-6.33423 11.141149,-14.25019 8.689956,-9.35572 15.230867,-18.34783 15.230867,-20.9386 0,-0.62639 -1.612099,-2.80161 -3.582442,-4.83382 -3.742689,-3.8602 -4.173425,-4.8519 -2.686831,-6.18599 0.983207,-0.88234 1.21481,-2.5825 0.351799,-2.5825 -1.24165,0 -3.921242,-7.90152 -5.078438,-14.97518 -0.494947,-3.02549 0.494018,-11.72706 2.084001,-18.33643 2.371388,-9.857567 8.812841,-25.40104 14.084421,-33.986245 4.353373,-7.08983 13.823643,-17.252433 23.080833,-24.768168 8.90824,-7.232436 11.75545,-9.006585 20.48218,-12.762803 5.84267,-2.514838 8.03778,-2.865401 9.11924,-1.456357 0.54597,0.71134 -1.6212,3.382229 -10.87014,13.396708 -13.18401,14.275268 -19.5752,23.068723 -24.57631,33.81384 -5.46488,11.741563 -4.08924,14.556859 3.77795,7.731707 2.2612,-1.961697 5.32718,-5.230171 6.81329,-7.263276 2.89308,-3.957929 27.02962,-30.06444 32.97708,-35.668591 1.97034,-1.856607 4.85517,-4.646779 6.41073,-6.200382 3.11392,-3.110003 3.54209,-3.280421 4.64188,-1.8475 0.92473,1.204833 0.17707,5.587027 -2.77841,16.284864 -2.3781,8.607895 -4.88602,15.302005 -10.43712,27.858685 -2.25849,5.108744 -4.10635,9.511432 -4.10635,9.783751 0,1.610781 -6.00985,11.744737 -11.85363,19.987907 -8.79935,12.41224 -14.51877,18.90476 -24.15611,27.42134 l -2.17174,1.91917 1.47707,1.66709 c 1.85847,2.09755 1.86079,3.24124 0.0104,5.12095 -0.80667,0.81945 -2.18373,2.60875 -3.06013,3.97623 -1.86307,2.90703 -1.74531,3.2391 3.13634,8.84433 2.99901,3.44354 19.50891,16.25896 20.94615,16.25896 0.93573,0 2.0298,-0.53588 20.44825,-10.01572 7.38878,-3.80295 15.12487,-7.76217 17.19131,-8.79827 2.06644,-1.03609 3.89966,-2.38373 4.07384,-2.99474 1.43563,-5.03639 3.93247,-7.24437 8.19209,-7.24437 3.56054,0 4.95197,0.945 6.07554,4.12626 1.34005,3.79419 0.82394,6.89587 -1.49917,9.00958 -2.02835,1.84553 -5.95082,2.76187 -7.63943,1.78467 -0.9328,-0.53982 -2.31861,-0.0619 -7.06032,2.43478 -3.24484,1.70854 -11.94508,6.25188 -19.33386,10.09633 -7.38879,3.84445 -13.66636,7.20524 -13.95016,7.46843 -0.2838,0.26319 0.45507,2.17973 1.64195,4.25898 2.81787,4.93655 2.86637,7.71151 0.21747,12.44384 -1.37402,2.45471 -2.76486,3.95416 -4.76439,5.13644 -2.68662,1.58854 -2.90646,1.6194 -4.52248,0.63495 -1.69746,-1.03407 -1.70112,-1.03224 -5.4964,2.75379 -2.4524,2.44643 -4.6576,4.03989 -6.22484,4.49802 -1.33487,0.39021 -2.77289,0.81658 -3.1956,0.9475 -0.59973,0.18575 -0.66531,1.55235 -0.29854,6.22111 0.70691,8.99829 0.47088,31.87616 -0.37301,36.15475 -0.75929,3.84968 -1.43991,4.95254 -2.21717,3.59265 z M 47.49761,234.20192 c 12.051751,-6.20921 18.837031,-9.62007 34.167725,-17.17564 10.819573,-5.33231 11.060184,-5.76287 3.532251,-6.3208 l -4.863312,-0.36045 -7.514211,4.83854 c -9.020323,5.80834 -10.890076,6.93817 -22.727647,13.73354 -11.372373,6.52832 -15.595896,9.42162 -15.595896,10.68386 0,0.53705 0.140974,0.97646 0.313276,0.97646 0.172301,0 5.881818,-2.86898 12.687814,-6.37551 z m 62.65242,-26.74135 c 2.69516,-1.28737 6.26124,-2.53589 7.92463,-2.77449 1.66338,-0.2386 3.15457,-0.66167 3.31374,-0.94017 0.53612,-0.938 -0.84629,-3.76505 -5.89495,-12.05524 -7.05911,-11.59148 -11.04838,-19.06147 -12.32902,-23.0864 -1.22928,-3.8635 -1.73342,-8.6784 -0.91826,-8.77014 0.29292,-0.033 1.90205,3.37634 3.57585,7.57624 2.89944,7.27527 4.72721,10.49822 15.73352,27.74317 2.52548,3.95697 4.89468,7.73388 5.26489,8.39312 0.61579,1.09655 0.9979,0.86282 4.48754,-2.74506 2.09793,-2.16902 4.4191,-4.1512 5.15815,-4.40484 l 1.34372,-0.46116 -1.17151,-1.72859 c -2.12971,-3.14245 -5.03186,-6.16298 -13.3147,-13.85786 -4.50525,-4.18544 -9.47453,-9.19961 -11.04286,-11.14261 -2.84524,-3.52494 -6.8505,-11.15843 -6.33628,-12.07607 0.58059,-1.0361 1.34539,-0.36641 2.93849,2.57305 2.49825,4.60959 6.09246,8.46729 17.50077,18.7838 5.71268,5.16596 11.7551,11.20049 13.42759,13.41007 1.6725,2.20959 3.24537,3.88078 3.49528,3.71377 1.00558,-0.67202 0.35706,-4.05271 -1.23265,-6.42568 -2.93006,-4.37375 -7.22047,-8.20928 -21.95439,-19.62674 -4.81905,-3.73433 -10.01148,-9.83373 -11.37459,-13.36138 -1.30034,-3.36521 -0.98401,-4.96423 1.61324,-8.15479 l 2.42165,-2.97485 -1.67531,-0.48713 c -2.2044,-0.64097 -20.847797,-0.66717 -21.437219,-0.0301 -0.251335,0.27164 0.357278,1.43377 1.352473,2.5825 4.337756,5.00699 4.51908,6.1192 2.238038,13.72776 -2.297852,7.66464 -5.003844,13.5419 -10.460519,22.71968 -5.581854,9.38831 -9.73865,18.77308 -8.836052,19.94908 0.685445,0.89307 9.413915,3.90739 12.657264,4.37111 2.001328,0.28614 2.333017,0.13454 2.836099,-1.29626 0.313342,-0.89117 0.570435,-2.40035 0.57132,-3.35374 8.84e-4,-0.95339 0.780989,-5.07455 1.733567,-9.15812 0.952578,-4.08358 2.026587,-10.25736 2.386687,-13.71952 0.3601,-3.46216 0.950527,-9.12752 1.312061,-12.58968 0.712791,-6.82592 1.48568,-9.36691 2.383069,-7.83472 0.707329,1.2077 0.676429,7.45319 -0.06991,14.12956 -1.408329,12.59822 -1.915987,16.07419 -3.064491,20.98279 -0.664672,2.84075 -1.355619,7.24817 -1.535438,9.79428 l -0.326944,4.62927 1.724531,0.31433 c 0.948492,0.17288 3.739654,0.24416 6.202582,0.1584 3.65265,-0.12718 5.38128,-0.58736 9.37834,-2.49661 z m -37.243615,-13.415 c 1.257818,-2.63741 3.828015,-7.11953 5.711548,-9.96028 4.583288,-6.91252 9.036407,-15.17218 8.179942,-15.17218 -0.118521,0 -1.257745,1.0895 -2.531609,2.4211 -1.273864,1.3316 -4.193817,4.27838 -6.488785,6.54841 -2.294968,2.27002 -5.075173,5.46586 -6.178234,7.10187 -2.492793,3.69718 -5.608566,10.98018 -5.195473,12.14422 0.334108,0.94147 2.65268,2.14428 3.618596,1.87723 0.32839,-0.0908 1.626197,-2.32296 2.884015,-4.96037 z m 82.796045,-20.99928 c 20.42796,-10.91195 23.97246,-12.67121 25.37563,-12.59483 5.37387,0.29253 6.48496,0.14689 7.96681,-1.04426 2.41415,-1.94056 2.49168,-5.43228 0.17621,-7.93604 -3.16907,-3.42676 -6.84032,-2.13257 -9.27421,3.26935 -0.6914,1.53456 -1.66013,3.02907 -2.15271,3.32115 -1.75362,1.03979 -33.19296,17.46718 -36.27223,18.95261 -1.72405,0.83169 -3.13463,1.76057 -3.13463,2.06418 0,0.61322 1.24783,2.10175 1.76137,2.10113 0.18061,-2.2e-4 7.17981,-3.6602 15.55376,-8.13329 z m 27.91319,-15.81141 c -2.36203,-1.47569 0.17992,-5.82676 2.58944,-4.43236 1.24286,0.71924 2.08236,3.10327 1.35085,3.83615 -0.95396,0.95576 -2.89474,1.24942 -3.94029,0.59621 z m 2.87151,-1.29621 c 0.63098,-1.10395 -1.35984,-2.96073 -2.20018,-2.05205 -0.37434,0.40478 -0.51903,1.19129 -0.32154,1.7478 0.41323,1.16441 1.92579,1.3469 2.52172,0.30425 z M 109.7278,138.89158 c 1.30051,-0.88774 2.53055,-1.61406 2.73342,-1.61406 0.81484,0 13.33227,-12.39974 16.87829,-16.71958 2.08409,-2.5389 6.0092,-7.81495 8.72246,-11.72456 11.20894,-16.151229 24.4885,-47.22074 28.08647,-65.712482 0.38071,-1.956674 0.31767,-2.096264 -0.68454,-1.515862 -1.73061,1.002222 -23.26084,24.197507 -29.77575,32.07847 -12.4952,15.115205 -20.27336,22.274044 -24.201,22.274044 -2.37235,0 -4.32621,-2.797388 -3.80343,-5.445445 0.21491,-1.08858 0.59264,-2.269767 0.8394,-2.624861 0.24676,-0.355093 1.03983,-2.594167 1.76238,-4.975719 1.49408,-4.924557 6.28669,-13.443593 11.98084,-21.296364 4.34281,-5.989144 14.59236,-17.408355 19.91731,-22.190233 1.92379,-1.727584 3.22416,-3.239688 2.88973,-3.360231 -0.95301,-0.343501 -13.72566,6.776716 -18.03045,10.051219 -10.17519,7.739918 -19.76569,17.504866 -25.57055,26.035665 -2.023081,2.973119 -4.376811,6.422531 -5.230509,7.665358 -2.448124,3.564019 -7.234953,14.747444 -9.469406,22.123281 -3.540494,11.68704 -4.17748,25.73247 -1.447603,31.91939 0.659001,1.49355 2.129671,3.5999 3.268156,4.68078 l 2.069973,1.96525 h 8.35012 c 7.878199,0 8.483759,-0.0912 10.714689,-1.61406 z m -7.91123,-1.98889 c -1.3716,-0.79998 -1.64195,-1.38455 -1.64195,-3.55028 0,-2.23393 0.39238,-3.01513 2.8361,-5.64647 3.54138,-3.81327 7.23898,-5.25695 9.45072,-3.68993 1.78104,1.26187 1.8393,3.18329 0.1868,6.15964 -3.25504,5.86269 -7.64215,8.58733 -10.83167,6.72704 z m -12.192394,-1.87297 c -1.838023,-1.39209 -3.568123,-7.67944 -3.245519,-11.79454 0.0348,-0.44386 0.744523,-0.80703 1.57717,-0.80703 1.220883,0 1.732244,0.55079 2.641978,2.84569 1.594772,4.02298 2.074336,8.18414 1.10578,9.59482 -0.71104,1.03561 -0.904876,1.05063 -2.079409,0.16106 z
+		</Geometry>
+
+		<Style x:Key="BackgroundImageStyle" TargetType="Path">
+			<Setter Property="Data" Value="{StaticResource BackgroundSvgPath}"/>
+			<Setter Property="Stretch" Value="UniformToFill"/>
+			<Setter Property="Fill" Value="#FFFFFF"/>
+			<Setter Property="Opacity" Value="0"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+			<Setter Property="Stroke" Value="#FF476697"/>
+			<Setter Property="StrokeThickness" Value="0.1"/>
+		</Style>-->
+	</Window.Resources>
+
+	<Grid>
+		<!--<Canvas Panel.ZIndex="0">
+			<Path 
+			Data="{StaticResource BackgroundSvgPath}"
+			Stretch="Fill"
+			Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}"
+			Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}"
+			Fill="#FFFFFF"
+			Opacity="0.8"
+			Stroke="#80000000"
+			StrokeThickness="1.2"
+		/>
+		</Canvas>-->
+
+		<!-- Main Content -->
+		<Grid x:Name="Main" MinWidth="300" MinHeight="445">
+			<!--MinHeight="445"-->
+
+			<Grid.Height>
+				<MultiBinding ConverterParameter="x + y + 56" Converter="{StaticResource Math}">
+					<Binding ElementName="TopBlock" Path="ActualHeight"/>
+					<Binding ElementName="ModuleSettingsBorder" Path="ActualHeight"/>
+				</MultiBinding>
+			</Grid.Height>
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="38" />
+			</Grid.ColumnDefinitions>
+
+			<!--  RIGHT PANEL  -->
+			<StackPanel Grid.Column="1" Orientation="Horizontal">
+				<Line Stroke="#50737373" StrokeThickness="3" Y1="0" Y2="{Binding ActualHeight, ElementName=Main}"/>
+				<Border Width="40" CornerRadius="0,12,12,0"
+					Background="#00000000">
+					<StackPanel x:Name="RightControls"
+					Margin="0,24,0,24" Orientation="Vertical">
+						<StackPanel.Resources>
+							<Style TargetType="controls:WindowControlButton">
+								<Setter Property="FillColor" Value="{StaticResource InactiveColor}"/>
+								<Setter Property="GlowColor" Value="{StaticResource FancyColor}"/>
+								<Setter Property="Height" Value="32"/>
+								<Setter Property="Width" Value="30"/>
+								<Setter Property="Margin" Value="-6,0,0,0"/>
+								<Setter Property="Scale" Value="0.6"/>
+								<Setter Property="MaxScale" Value="0.65"/>
+							</Style>
+						</StackPanel.Resources>
+
+						<controls:WindowControlButton Click="ExitButtonClick" 
+													PathData="{StaticResource CloseIcon}" GlowColor="#d93732"/>
+						<controls:WindowControlButton Click="TrayButtonClick" 
+													PathData="{StaticResource HideIcon}"/>
+						<controls:WindowControlButton x:Name="Pin" Click="PinClick"
+													PathData="{StaticResource Pin}"/>
+						<controls:WindowControlButton x:Name="Overlay" Click="OverlayClick"
+													PathData="{StaticResource Overlay}"/>
+						<controls:WindowControlButton x:Name="ServiceButton" Click="ServiceWindowButtonClick"
+											PathData="{StaticResource SettingsIcon}"/>
+						<controls:WindowControlButton x:Name="AhkButton" Click="AhkClick" 
+											PathData="{StaticResource AhkIcon}"/>
+						<controls:WindowControlButton x:Name="SwapButton" Click="SwapWindowButtonClick"
+											PathData="{StaticResource 4Sqaure}"/>
+
+						<Slider x:Name="VolumeSlider" Visibility="Hidden"
+							Style="{StaticResource Slider}" 
+							Orientation="Vertical"
+							Value="0" Maximum="100" TickFrequency="1"
+							Width="20"
+							Height="96"
+							Margin="-6,5,0,0"
+							MouseWheel="Slider_MouseWheel"
+							ValueChanged="VolumeSlider_ValueChanged"/>
+
+					</StackPanel>
+				</Border>
+			</StackPanel>
+
+			<!--  MAIN CONTENT  -->
+			<Grid x:Name="MainContent" Grid.Column="0">
+
+				<!-- TOP BLOCK -->
+				<Grid x:Name="TopBlock"
+				VerticalAlignment="Top" Margin="20,0">
+					<Border Background="{StaticResource LightBackColor}" CornerRadius="0,0,12,12"
+						MinHeight="120">
+						<StackPanel Margin="0,0,0,12">
+
+							<!-- TIMER -->
+							<Grid HorizontalAlignment="Center">
+								<Label x:Name="CurrentTime"
+									VerticalAlignment="Top" 
+									Height="60" Width="180"
+									Margin="0,-4,0,-8"
+									HorizontalAlignment="Center"
+									HorizontalContentAlignment="Left"
+									Content="00:00:00"
+									FontFamily="{StaticResource BigTextFont}" FontSize="44"
+									Foreground="{StaticResource AccentColor}"/>
+							</Grid>
+
+							<!-- CURRENTLY ENABLED -->
+							<ItemsControl x:Name="EnabledModules" ItemsSource="{Binding Source={StaticResource ModulesViewSource}}">
+								<ItemsControl.Resources>
+									<Style TargetType="controls:EnabledModuleTimer">
+										<Setter Property="Margin" Value="6,0,6,4"/>
+										<Setter Property="Foreground" Value="{StaticResource TitleColor}"/>
+										<Setter Property="Scale" Value="0.75"/>
+									</Style>
+								</ItemsControl.Resources>
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<WrapPanel HorizontalAlignment="Center" 
+											Margin="12,2,12,-4"
+											Width="200"/>
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+							</ItemsControl>
+
+							<!-- SPEED -->
+							<controls:ConnectionInfoPanel x:Name="Speed" Margin="12,8,12,-2" HorizontalAlignment="Center"/>
+
+						</StackPanel>
+					</Border>
+				</Grid>
+
+
+				<!-- SETTINGS BLOCK -->
+				<Border x:Name="ModuleSettingsBorder"
+						Background="{StaticResource LightBackColor}"
+						MinHeight="100" CornerRadius="12"
+						VerticalAlignment="Bottom" Margin="20,0,20,20">
+					<StackPanel x:Name="ModuleSettingsPanel" Margin="10,4,10,0">
+
+						<!-- MODULE HEADER -->
+						<StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+							<controls:WindowControlButton x:Name="SelectedModuleButton"
+								Width="30" Height="30" Margin="4,4,4,0"
+								VerticalAlignment="Center"
+								Click="ModuleSelectionClick"
+								PathData="{StaticResource ArcIcon}"
+								FillColor="{StaticResource InactiveColor}" GlowColor="{StaticResource TitleColor}"
+								MaxScale="1.05" Scale="1.0" />
+
+							<Label x:Name="SelectedModuleLabel" Content="PVE Multishot"
+								Height="40" Margin="-5,-2,0,0"
+								HorizontalContentAlignment="Left"
+								VerticalContentAlignment="Center"
+								FontFamily="{StaticResource TitleFont}" FontSize="26" 
+								Foreground="{StaticResource AccentColor}"/>
+						</StackPanel>
+
+						<Line X1="40" X2="{Binding ActualWidth, ElementName=SelectedModuleLabel, Converter={StaticResource Math}, ConverterParameter=x+28}" 
+							Opacity="0.5" Stroke="{StaticResource InactiveColor}" StrokeThickness="2" Margin="0,-3,0,6"/>
+
+						<StackPanel x:Name="DescriptionPanel" Margin="6,0" Visibility="Collapsed">
+							<Viewbox StretchDirection="UpOnly" Stretch="UniformToFill" MaxWidth="190">
+								<TextBlock x:Name="Description" FontSize="11" TextWrapping="Wrap" HorizontalAlignment="Center" 
+										MinWidth="175" MaxWidth="195"
+										Foreground="{StaticResource TitleColor}" FontFamily="{StaticResource SmallTitleFont}"/>
+							</Viewbox>
+							<Separator Background="{StaticResource InactiveColor}" Opacity="0.5" Margin="5,4"/>
+						</StackPanel>
+
+						<!-- SETTINGS -->
+						<Grid MinHeight="64">
+							<StackPanel Orientation="Vertical" Margin="10,0,10,10" VerticalAlignment="Center">
+								<StackPanel.Resources>
+									<Style TargetType="Label">
+										<Setter Property="Foreground" Value="{StaticResource TitleColor}"/>
+										<Setter Property="Opacity" Value="0.9"/>
+										<Setter Property="FontFamily" Value="{StaticResource Kantumruy}"/>
+										<Setter Property="FontSize" Value="15"/>
+										<Setter Property="Margin" Value="-6,-6"/>
+										<Setter Property="VerticalAlignment" Value="Center"/>
+									</Style>
+									<Style TargetType="controls:Checkbox">
+										<Setter Property="Width" Value="20"/>
+										<Setter Property="Height" Value="20"/>
+										<Setter Property="Margin" Value="0,2"/>
+										<Setter Property="VerticalAlignment" Value="Center"/>
+										<Setter Property="HorizontalAlignment" Value="Right"/>
+									</Style>
+									<Style TargetType="Grid">
+										<Setter Property="MinHeight" Value="20"/>
+									</Style>
+									<Style TargetType="controls:Button">
+										<Setter Property="Background" Value="{StaticResource InactiveColor}"/>
+										<Setter Property="Foreground" Value="White"/>
+										<Setter Property="MaxWidth" Value="115"/>
+										<Setter Property="CornerRadius" Value="7"/>
+										<Setter Property="HorizontalAlignment" Value="Right"/>
+										<Setter Property="VerticalAlignment" Value="Center"/>
+										<Setter Property="Height" Value="22"/>
+									</Style>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="MinWidth" Value="40"/>
+                                        <Setter Property="FontSize" Value="16"/>
+                                        <Setter Property="Margin" Value="0,0,-1,0"/>
+                                        <Setter Property="CaretBrush" Value="White"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                                        <Setter Property="FontFamily" Value="{StaticResource Kantumruy}"/>
+                                        <Setter Property="Foreground" Value="{StaticResource AccentColor}"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                    </Style>
+                                </StackPanel.Resources>
+
+								<!--ENABLED-->
+								<Grid x:Name="ModuleCheckboxGrid">
+									<Label Content="Enabled" HorizontalAlignment="Left"/>
+									<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+										<controls:WindowControlButton Scale="1.0" MaxScale="1.0" Height="16" Width="16" Margin="6,0"
+										PathData="{StaticResource QuestionMark}"
+										FillColor="{StaticResource InactiveColor}" GlowColor="{StaticResource AccentColor}"
+										Click="Description_Click"/>
+										<controls:Checkbox x:Name="ModuleCheckbox" Click="CurrentModuleToggle"/>
+									</StackPanel>
+								</Grid>
+
+								<!--API SETTINGS-->
+								<StackPanel x:Name="API_Panel" Visibility="Collapsed">
+									<Grid ToolTip="Error code prevention">
+										<Label Content="Auto disable" HorizontalAlignment="Left"/>
+										<controls:Checkbox x:Name="API_Disable" Click="API_DisableClick"/>
+									</Grid>
+
+									<Grid ToolTip="Injects back dropped packets">
+										<Label Content="Buffering" HorizontalAlignment="Left"/>
+										<controls:Checkbox x:Name="API_Buffer" Click="API_BufferClick"/>
+									</Grid>
+								</StackPanel>
+
+								<!--MULTISHOT SETTINGS-->
+								<StackPanel x:Name="MULTISHOT_Panel" Visibility="Visible">
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition/>
+											<ColumnDefinition Width="2*"/>
+											<ColumnDefinition/>
+										</Grid.ColumnDefinitions>
+
+										<Grid Grid.Column="0" ToolTip="Blocks updates sent by server&#x0a;Better for efficiency">
+											<Label Content="DL" HorizontalAlignment="Left"/>
+											<controls:Checkbox x:Name="MS_INBOUND" Click="MS_InboundClick"/>
+										</Grid>
+
+										<Grid Grid.Column="2" ToolTip="Blocks updates sent to server&#x0a;Injects shots as single big shot on deactivation&#x0a;Limited multiplying efficiency&#x0a;Works good on lower timelimit values">
+											<Label Content="UL" HorizontalAlignment="Left"/>
+											<controls:Checkbox x:Name="MS_OUTBOUND" Click="MS_OutboundClick"/>
+										</Grid>
+									</Grid>
+
+									<StackPanel ToolTip="Speed over multiplying efficiency preference">
+										<Grid>
+											<Label Content="Time limit" HorizontalAlignment="Left"/>
+											<Label x:Name="MS_MaxTime" Content="0.0sec" HorizontalAlignment="Right"/>
+										</Grid>
+
+										<Slider x:Name="MS_MaxTimeSlider" Style="{StaticResource Slider}" Margin="0,2"
+											Minimum="0.5" Maximum="1.8" TickFrequency="0.05"
+											MouseWheel="Slider_MouseWheel" ValueChanged="MS_MaxTimeSlider_ValueChanged"/>
+									</StackPanel>
+
+									<Grid ToolTip="Activate on shot packet instead of LMB&#x0a;Good for fusion rifles&#x0a;Can be inconsistent&#x0a;Doesn't work alone">
+										<Label Content="Shot detection" HorizontalAlignment="Left"/>
+										<controls:Checkbox x:Name="MS_DETECT" Click="MS_DetectClick"/>
+									</Grid>
+
+									<Grid ToolTip="Make it work passively">
+										<Label Content="Togglable" HorizontalAlignment="Left"/>
+										<controls:Checkbox x:Name="MS_TOGGLABLE" Click="MS_TogglableClick"/>
+									</Grid>
+
+									<Grid ToolTip="Multiply shots sent to players&#x0a;Works on pve port if disabled&#x0a;Keybind purely toggles the setting" Margin="0,0,0,2">
+										<Label Content="Players" HorizontalAlignment="Left"/>
+										<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+											<controls:Button x:Name="MS_PVPKeybind" Text="No keybind" Click="KeybindButtonClick"/>
+											<controls:Checkbox x:Name="MS_PVP" Click="MS_PlayersClick" Margin="6,0,0,0"/>
+										</StackPanel>
+									</Grid>
+
+								</StackPanel>
+
+								<!-- 30k SETTINGS-->
+								<StackPanel x:Name="INSTANCE_Panel" Visibility="Collapsed">
+									<Grid Margin="0,0,0,3" ToolTip="Injects back dropped packets">
+										<Label Content="Buffering" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+										<controls:Checkbox x:Name="InstBufferCB" Click="InstBufferCBClick" Margin="6,0,0,0"/>
+									</Grid>
+									<Grid Margin="0,0,0,3" ToolTip="Enable rate-limited packet release instead of blocking">
+										<Label Content="30k slow" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+										<controls:Checkbox x:Name="InstSlowCB" Click="InstSlowCBClick" Margin="6,0,0,0"/>
+									</Grid>
+
+									<Grid ToolTip="Bytes per second allowed through during 30k Slow" Margin="0,0,0,3">
+                                        <Label Content="Bit rate" HorizontalAlignment="Left"/>
+
+										<!--<TextBox x:Name="InstRateLimitTB" Text="1000000" TextChanged="InstRateLimitTB_TextChanged"/>-->
+										<StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" HorizontalAlignment="Right">
+                                            <TextBox x:Name="InstRateLimitTB" MaxLength="10" MaxLines="1" TextChanged="InstRateLimitTB_TextChanged"/>
+                                            <Label Content="B/s" FontFamily="{StaticResource Kantumruy}" Padding="16,1,6,0"/>
+										</StackPanel>
+									</Grid>
+								</StackPanel>
+
+								<!--ACTIVATION-->
+								<Grid x:Name="ActivationGrid">
+									<Label x:Name="kbd" Content="Keybind" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+									<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+										<controls:Button x:Name="KeybindButton" Text="No keybind" MaxWidth="100" Click="KeybindButtonClick"/>
+										<controls:Checkbox x:Name="PveInCB" Visibility="Collapsed" Click="PveInCBClick" Margin="6,0,0,0"/>
+										<controls:Checkbox x:Name="PvpInCB" Visibility="Collapsed" Click="PvpInCBClick" Margin="6,0,0,0"/>
+									</StackPanel>
+								</Grid>
+
+								<!--PVP SETTINGS-->
+								<StackPanel x:Name="PVP_Panel" Visibility="Collapsed">
+									<Grid ToolTip="Block info sent to players" Margin="0,3,0,0">
+										<Label Content="UL" HorizontalAlignment="Left"/>
+
+										<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+											<controls:Button x:Name="PvpOutbound" Text="No keybind" Click="KeybindButtonClick"/>
+											<controls:Checkbox x:Name="PvpOutCB" Click="PvpOutCBClick" Margin="6,0,0,0"/>
+										</StackPanel>
+									</Grid>
+
+									<Grid Margin="0,3,0,3" ToolTip="Allows to reinitiate connection with players on desync&#x0a;Experimental and not error-code proof">
+										<Label Content="Auto-resync" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+										<controls:Checkbox x:Name="PvpResyncCB" Click="PvpResyncCBClick" Margin="6,0,0,0"/>
+									</Grid>
+
+									<Grid ToolTip="Injects back dropped packets">
+										<Label Content="Buffering" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+										<controls:Checkbox x:Name="PvpBufferCB" Click="PvpBufferCBClick" Margin="6,0,0,0"/>
+									</Grid>
+								</StackPanel>
+
+								<!--PVE SETTINGS-->
+								<StackPanel x:Name="PVE_Panel" Visibility="Collapsed">
+
+									<Grid ToolTip="Block info sent to server" Margin="0,3,0,3">
+										<Label Content="UL" HorizontalAlignment="Left"/>
+
+										<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+											<controls:Button x:Name="PveOutbound" Text="No keybind" Click="KeybindButtonClick"/>
+											<controls:Checkbox x:Name="PveOutCB" Click="PveOutCBClick" Margin="6,0,0,0"/>
+										</StackPanel>
+									</Grid>
+
+									<Grid ToolTip="Slow down world updates sent from server by x20&#x0a;Keeps you out of resync for longer periods" Margin="0,0,0,3">
+										<Label Content="DL Slow" HorizontalAlignment="Left"/>
+
+										<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+											<controls:Button x:Name="PveSlowInbound" Text="No keybind" Click="KeybindButtonClick"/>
+											<controls:Checkbox x:Name="PveSlowInCB" Click="PveSlowInCBClick" Margin="6,0,0,0"/>
+										</StackPanel>
+									</Grid>
+
+									<Grid ToolTip="Slow down world updates sent to server by x20&#x0a;Experimental, not tested" Margin="0,0,0,3">
+										<Label Content="UL Slow" HorizontalAlignment="Left"/>
+
+										<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+											<controls:Button x:Name="PveSlowOutbound" Text="No keybind" Click="KeybindButtonClick"/>
+											<controls:Checkbox x:Name="PveSlowOutCB" Click="PveSlowOutCBClick" Margin="6,0,0,0"/>
+										</StackPanel>
+									</Grid>
+
+									<Grid Margin="0,0,0,3" ToolTip="Allows to reinitiate connection with the server on desync&#x0a;Prevents most error-code cases">
+										<Label Content="Auto-resync" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+										<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+											<controls:Button x:Name="PveResync" Text="No keybind" Click="KeybindButtonClick" />
+											<controls:Checkbox x:Name="PveResyncCB" Click="PveResyncCBClick" Margin="6,0,0,0" />
+										</StackPanel>
+									</Grid>
+
+									<Grid Margin="0,0,0,3" ToolTip="Injects back dropped packets">
+										<Label Content="Buffering" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+										<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+											<controls:Button x:Name="PveBuffer" Text="No keybind" Click="KeybindButtonClick" />
+											<controls:Checkbox x:Name="PveBufferCB" Click="PveBufferCBClick" Margin="6,0,0,0" />
+										</StackPanel>
+									</Grid>
+								</StackPanel>
+
+							</StackPanel>
+						</Grid>
+
+					</StackPanel>
+				</Border>
+
+
+				<!--  MODULE SELECTION PAGE  -->
+				<!--MaxWidth="224" MaxHeight="448"-->
+				<Grid x:Name="ModuleSelection"
+				VerticalAlignment="Top" HorizontalAlignment="Center"
+				MinWidth="232"
+				Margin="16"
+				Opacity="0"
+				Visibility="Hidden">
+					<Grid.Resources>
+						<Style TargetType="controls:WindowControlButton">
+							<Setter Property="Scale" Value="0.6" />
+							<Setter Property="MaxScale" Value="0.65" />
+							<Setter Property="Width" Value="56" />
+							<Setter Property="Height" Value="56" />
+						</Style>
+					</Grid.Resources>
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="56" />
+						<ColumnDefinition Width="56" />
+						<ColumnDefinition Width="56" />
+						<ColumnDefinition Width="56" />
+					</Grid.ColumnDefinitions>
+
+					<Grid.RowDefinitions>
+						<RowDefinition Height="56" />
+						<RowDefinition Height="56" />
+						<RowDefinition Height="56" />
+						<RowDefinition Height="56" />
+						<RowDefinition Height="56" />
+						<RowDefinition Height="56" />
+						<RowDefinition Height="56" />
+						<RowDefinition Height="56" />
+					</Grid.RowDefinitions>
+
+					<!--<controls:WindowControlButton x:Name="PVE" PathData="{StaticResource ArcIcon}"
+				GlowColor="#79bbe7" Click="NewModuleSelected"/>
+				<controls:WindowControlButton x:Name="Glaive" PathData="{StaticResource StasisIcon}"
+				GlowColor="#476697" Click="NewModuleSelected"/>-->
+
+				</Grid>
+
+			</Grid>
+
+			<!--  TASK BAR ICON  -->
+			<tb:TaskbarIcon
+			x:Name="tbIcon"
+			IconSource="Assets/appLogo.ico"
+			Visibility="Hidden"/>
+		</Grid>
+	</Grid>
+</Window>
+
