@@ -233,7 +233,7 @@ namespace vermillion.Interception.Modules
                 }
 
                 await ActivatePortModules(profile);
-                await OpenInventory();
+                await OpenLoadouts();
                 await PerformLoadoutClicking(enabledLoadouts, profile.SwapDuration, profile.SwapDelay);
 
                 if (profile.EndingLoadout >= 1 && profile.EndingLoadout <= 12)
@@ -489,14 +489,32 @@ namespace vermillion.Interception.Modules
             return loadouts;
         }
 
-        private async Task OpenInventory()
+        private async Task OpenLoadouts()
         {
-            Debug.WriteLine($"{Name}: Opening inventory...");
+            Debug.WriteLine($"{Name}: Opening loadout menu...");
 
+            if (await IsLoadoutMenuOpen())
+            {
+                Debug.WriteLine($"{Name}: Loadouts already open");
+                SetCursorPos(0, 0);
+                await Task.Delay(10);
+                return;
+            }
+            if (await IsInventoryOpen())
+            {
+                Debug.WriteLine($"{Name}: Inventory not open, opening inventory first");
+                SetCursorPos(0, 0);
+                await SimulateKeyPress((int)Keycode.VK_LEFT);
+                await Task.Delay(70);
+                await SimulateKeyPress((int)Keycode.VK_LEFT);
+                await Task.Delay(70);
+                return;
+            }
             // Send F1 to open inventory
             await SimulateKeyPress((int)Keycode.VK_F1);
             await Task.Delay(550);
 
+            SetCursorPos(0, 0);
             // Navigate to the loadouts screen
             await SimulateKeyPress((int)Keycode.VK_LEFT);
             await Task.Delay(70);
