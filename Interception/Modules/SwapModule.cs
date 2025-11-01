@@ -493,48 +493,15 @@ namespace redfish.Interception.Modules
         {
             Debug.WriteLine($"{Name}: Opening inventory...");
 
-            // 1. Check if inventory is already open
-            if (await IsInventoryOpen() || await IsLoadoutMenuOpen())
-            {
-                Debug.WriteLine($"{Name}: Inventory or Loadout menu is already open, skipping F1 press.");
-            }
-            else
-            {
-                // 2. If not open, press F1 and wait
-                Debug.WriteLine($"{Name}: Inventory not open, sending F1.");
-                // write time
-                Debug.WriteLine($"{Name}: Inventory open check start at {DateTime.Now:HH:mm:ss.fff}.");
-                await SimulateKeyPress((int)Keycode.VK_F1);
-                await Task.Delay(300); // Wait for inventory to open
-            }
+            // Send F1 to open inventory
+            await SimulateKeyPress((int)Keycode.VK_F1);
+            await Task.Delay(550);
 
-            SetCursorPos(0, 0); // Move cursor to top-left to avoid clicking off loadout menu
-                                // print timestamp
-            Debug.WriteLine($"{Name}: Loadout open check start at {DateTime.Now:HH:mm:ss.fff}.");
-
-            // 3. Loop until the loadout menu is open
-            int maxAttempts = 40; // Prevent infinite loop
-
-            /* most of the time does not recognize inv open until iteration 30, however limiting to 15 iterations and just timing out works (~0.200ms delay) */
-
-            for (int i = 0; i < maxAttempts; i++)
-            {
-                if (await IsLoadoutMenuOpen())
-                {
-                    Debug.WriteLine($"{Name}: Loadout menu is open at {DateTime.Now:HH:mm:ss.fff} after {i + 1} attempts.");
-                    return;
-
-                }
-
-                //Debug.WriteLine($"{Name}: Loadout menu not open, sending LEFT arrow key (Attempt {i + 1}).");
-                await SimulateKeyPress((int)Keycode.VK_LEFT);
-            }
-
-            // ending time
-            Debug.WriteLine($"{Name}: Loadout menu open check failed at {DateTime.Now:HH:mm:ss.fff} after {maxAttempts} attempts.");
-            //await Task.Delay(50);
-            //await SimulateKeyPress((int)Keycode.VK_LEFT);
-            //await Task.Delay(70);
+            // Navigate to the loadouts screen
+            await SimulateKeyPress((int)Keycode.VK_LEFT);
+            await Task.Delay(70);
+            await SimulateKeyPress((int)Keycode.VK_LEFT);
+            await Task.Delay(70);
         }
 
         private async Task<bool> IsInventoryOpen()
