@@ -1,4 +1,4 @@
-﻿using redfish.Models;
+﻿using vermillion.Models;
 
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Shapes;
 
-namespace redfish.Interception.Modules
+namespace vermillion.Interception.Modules
 {
     public class TestModule : PacketModuleBase
     {

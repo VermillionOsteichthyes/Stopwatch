@@ -1,7 +1,7 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
 
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using redfish.Interception;
+using vermillion.Interception;
 
 using System;
 using System.Collections.Generic;
@@ -14,19 +14,19 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Media;
 using System.Windows.Threading;
-using redfish.Controls;
-using redfish.Windows.Controls;
+using vermillion.Controls;
+using vermillion.Windows.Controls;
 using System.ComponentModel;
-using redfish.Windows;
-using redfish.Interception.Modules;
-using redfish.Utility;
+using vermillion.Windows;
+using vermillion.Interception.Modules;
+using vermillion.Utility;
 using System.Windows.Media.Effects;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Application = System.Windows.Application;
 using System.Windows.Controls;
 
-namespace redfish
+namespace vermillion
 {
     public partial class MainWindow : Window
     {

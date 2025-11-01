@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace redfish.Windows.Controls
+namespace vermillion.Windows.Controls
 {
     public class ExitCommand : ICommand
     {

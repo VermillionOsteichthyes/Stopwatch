@@ -1,4 +1,4 @@
-﻿using redfish.Models;
+﻿using vermillion.Models;
 
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Diagnostics;
 
-namespace redfish.Interception.Modules
+namespace vermillion.Interception.Modules
 {
     public class KickModule : PacketModuleBase
     {

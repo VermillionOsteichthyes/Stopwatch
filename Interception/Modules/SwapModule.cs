@@ -1,6 +1,6 @@
-﻿using redfish.Models;
-using redfish.Utility;
-using redfish.Interception;
+﻿using vermillion.Models;
+using vermillion.Utility;
+using vermillion.Interception;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Navigation;
 
-namespace redfish.Interception.Modules
+namespace vermillion.Interception.Modules
 {
     public class SwapModule : PacketModuleBase
     {

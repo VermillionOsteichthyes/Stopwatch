@@ -1,4 +1,4 @@
-﻿using redfish.Interception;
+﻿using vermillion.Interception;
 
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 using WindivertDotnet;
 
-namespace redfish.Models
+namespace vermillion.Models
 {
     public class Packet : IDisposable
     {

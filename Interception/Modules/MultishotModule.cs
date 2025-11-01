@@ -1,8 +1,8 @@
 ﻿using RateLimiter;
 
-using redfish.Models;
-using redfish.Utility;
-using redfish.Windows;
+using vermillion.Models;
+using vermillion.Utility;
+using vermillion.Windows;
 
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Diagnostics;
 
-namespace redfish.Interception.Modules 
+namespace vermillion.Interception.Modules 
 {
     public class MultishotModule : PacketModuleBase
     {

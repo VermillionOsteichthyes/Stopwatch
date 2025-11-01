@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 
-using redfish.Database;
-using redfish.Models;
+using vermillion.Database;
+using vermillion.Models;
 
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 using WindivertDotnet;
 
-namespace redfish.Interception.Modules
+namespace vermillion.Interception.Modules
 {
     public static class PacketExtensions
     {

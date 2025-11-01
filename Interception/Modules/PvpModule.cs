@@ -1,5 +1,5 @@
-﻿using redfish.Models;
-using redfish.Utility;
+﻿using vermillion.Models;
+using vermillion.Utility;
 
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows.Media;
 
-namespace redfish.Interception.Modules
+namespace vermillion.Interception.Modules
 {
     public class PvpModule : PacketModuleBase
     {

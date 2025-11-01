@@ -6,7 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 
-namespace redfish.Controls
+namespace vermillion.Controls
 {
     public partial class Switch : UserControl
     {

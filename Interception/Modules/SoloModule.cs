@@ -1,4 +1,4 @@
-﻿using redfish.Models;
+﻿using vermillion.Models;
 
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 using WindivertDotnet;
 
-namespace redfish.Interception.Modules
+namespace vermillion.Interception.Modules
 {
     public class SoloModule : PacketModuleBase
     {

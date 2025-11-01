@@ -1,5 +1,5 @@
-﻿ using redfish.Controls;
-using redfish.Utility;
+﻿ using vermillion.Controls;
+using vermillion.Utility;
 
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ using System.Windows.Shapes;
 
 using Application = System.Windows.Application;
 
-namespace redfish
+namespace vermillion
 {
     public partial class ServiceWindow : Window
     {

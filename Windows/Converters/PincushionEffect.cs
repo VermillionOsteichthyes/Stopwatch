@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Effects;
 
-namespace redfish.Windows
+namespace vermillion.Windows
 {
     public class PincushionEffect : ShaderEffect
     {

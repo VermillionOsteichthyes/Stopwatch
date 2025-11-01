@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 
-using redfish.Interception.PacketProviders;
-using redfish.Models;
+using vermillion.Interception.PacketProviders;
+using vermillion.Models;
 
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Media;
 
-namespace redfish.Interception.Modules
+namespace vermillion.Interception.Modules
 {
     public class ApiModule : PacketModuleBase
     {

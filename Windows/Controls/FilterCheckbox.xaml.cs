@@ -6,7 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace redfish.Controls
+namespace vermillion.Controls
 {
     public partial class FilterCheckbox : UserControl
     {

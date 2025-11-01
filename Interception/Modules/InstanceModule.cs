@@ -1,4 +1,4 @@
-﻿using redfish.Models;
+﻿using vermillion.Models;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using WindivertDotnet;
 
-namespace redfish.Interception.Modules
+namespace vermillion.Interception.Modules
 {
     public class InstanceModule : PacketModuleBase
     {

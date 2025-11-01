@@ -1,5 +1,5 @@
-﻿using redfish.Database;
-using redfish.Models;
+﻿using vermillion.Database;
+using vermillion.Models;
 
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ using System.Windows.Media.Animation;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
-namespace redfish
+namespace vermillion
 {
     public static class ExtensionMethods
     {

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace redfish.Interception.Modules
+namespace vermillion.Interception.Modules
 {
     internal class PauserModule : PacketModuleBase
     {

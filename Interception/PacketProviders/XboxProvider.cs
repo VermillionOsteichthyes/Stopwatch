@@ -1,6 +1,6 @@
-﻿using redfish.Interception.Modules;
-using redfish.Models;
-using redfish.Utility;
+﻿using vermillion.Interception.Modules;
+using vermillion.Models;
+using vermillion.Utility;
 
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using System.Diagnostics;
 
 using WindivertDotnet;
 
-namespace redfish.Interception.PacketProviders
+namespace vermillion.Interception.PacketProviders
 {
     public class XboxProvider : PacketProviderBase
     {

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace redfish.Windows.Converters
+namespace vermillion.Windows.Converters
 {
     public class PacketSentConverter : IValueConverter
     {

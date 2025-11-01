@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace redfish.Controls
+namespace vermillion.Controls
 {
     public partial class Checkbox : UserControl
     {

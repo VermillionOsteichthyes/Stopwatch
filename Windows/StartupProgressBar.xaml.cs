@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.VisualBasic.ApplicationServices;
 
-using redfish.Database;
-using redfish.Utility;
+using vermillion.Database;
+using vermillion.Utility;
 
 using System;
 using System.ComponentModel;
@@ -31,7 +31,7 @@ using static System.Windows.Forms.AxHost;
 
 using Application = System.Windows.Application;
 
-namespace redfish
+namespace vermillion
 {
     public partial class StartupProgressBar : Window
     {

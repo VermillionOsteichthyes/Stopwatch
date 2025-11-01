@@ -7,7 +7,7 @@
 //using System.Text;
 //using System.Threading.Tasks;
 
-//namespace redfish.Utility
+//namespace vermillion.Utility
 //{
 //    public class Crypto
 //    {

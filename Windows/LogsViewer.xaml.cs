@@ -1,7 +1,7 @@
-﻿using redfish.Controls;
-using redfish.Database;
-using redfish.Interception.Modules;
-using redfish.Utility;
+﻿using vermillion.Controls;
+using vermillion.Database;
+using vermillion.Interception.Modules;
+using vermillion.Utility;
 
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Diagnostics;
 
-namespace redfish.Windows
+namespace vermillion.Windows
 {
     public partial class LogsViewer : Window
     {
@@ -225,7 +225,7 @@ namespace redfish.Windows
 
         private void LogCheckboxChecked(object sender, RoutedEventArgs e)
         {
-            var check = sender as redfish.Controls.FilterCheckbox;
+            var check = sender as vermillion.Controls.FilterCheckbox;
             var type = (LogLevel)Enum.Parse(typeof(LogLevel), check.Name);
             if (check.Checked)
             {

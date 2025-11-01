@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-using redfish.Database;
-using redfish.Models;
+using vermillion.Database;
+using vermillion.Models;
 
 using System;
 using System.Collections;
@@ -18,7 +18,7 @@ using System.Windows.Media;
 
 using WindivertDotnet;
 
-namespace redfish.Interception.Modules
+namespace vermillion.Interception.Modules
 {
     public class ReconnectModule : PacketModuleBase
     {

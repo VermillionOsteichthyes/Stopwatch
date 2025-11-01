@@ -1,7 +1,7 @@
 ﻿using OxyPlot.Wpf;
 
-using redfish.Interception;
-using redfish.Interception.Modules;
+using vermillion.Interception;
+using vermillion.Interception.Modules;
 
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace redfish.Controls
+namespace vermillion.Controls
 {
     public partial class EnabledModuleTimer : UserControl
     {

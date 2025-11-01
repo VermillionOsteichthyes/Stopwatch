@@ -1,4 +1,4 @@
-﻿using redfish.Interception;
+﻿using vermillion.Interception;
 
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace redfish.Controls
+namespace vermillion.Controls
 {
     public partial class ConnectionInfoPanel : UserControl
     {

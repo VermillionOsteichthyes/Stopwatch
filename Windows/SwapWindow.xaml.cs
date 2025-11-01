@@ -1,7 +1,7 @@
-﻿using redfish.Controls;
-using redfish.Interception;
-using redfish.Interception.Modules;
-using redfish.Utility;
+﻿using vermillion.Controls;
+using vermillion.Interception;
+using vermillion.Interception.Modules;
+using vermillion.Utility;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Threading;
 
-namespace redfish
+namespace vermillion
 {
     public partial class SwapWindow : Window
     {

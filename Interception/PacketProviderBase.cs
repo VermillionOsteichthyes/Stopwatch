@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Logging.Abstractions;
 
-using redfish.Database;
-using redfish.Interception.Modules;
-using redfish.Models;
+using vermillion.Database;
+using vermillion.Interception.Modules;
+using vermillion.Models;
 
 using System;
 using System.Collections.Concurrent;
@@ -19,7 +19,7 @@ using System.Diagnostics;
 
 using static System.Net.Mime.MediaTypeNames;
 
-namespace redfish.Interception
+namespace vermillion.Interception
 {
     public abstract class PacketProviderBase : IDisposable
     {

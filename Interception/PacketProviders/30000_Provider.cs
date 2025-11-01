@@ -1,4 +1,4 @@
-﻿using redfish.Models;
+﻿using vermillion.Models;
 
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 using WindivertDotnet;
 
-namespace redfish.Interception.PacketProviders
+namespace vermillion.Interception.PacketProviders
 {
     public class _30000_Provider : PacketProviderBase
     {

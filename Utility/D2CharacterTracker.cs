@@ -16,11 +16,11 @@ using DotNetBungieAPI.Models.Destiny.HistoricalStats;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
-using redfish.Interception.PacketProviders;
+using vermillion.Interception.PacketProviders;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
-namespace redfish.Utility
+namespace vermillion.Utility
 {
     public static class D2CharacterTracker
     {

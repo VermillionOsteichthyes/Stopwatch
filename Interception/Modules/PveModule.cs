@@ -1,9 +1,9 @@
 ﻿using DotNetBungieAPI.Models.Destiny.Components;
 
-using redfish.Interception.PacketProviders;
-using redfish.Models;
-using redfish.Utility;
-using redfish.Windows;
+using vermillion.Interception.PacketProviders;
+using vermillion.Models;
+using vermillion.Utility;
+using vermillion.Windows;
 
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using System.Windows.Media;
 
 using WindivertDotnet;
 
-namespace redfish.Interception.Modules
+namespace vermillion.Interception.Modules
 {
     public class PveModule : PacketModuleBase
     {

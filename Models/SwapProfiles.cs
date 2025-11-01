@@ -1,8 +1,8 @@
-﻿using redfish.Utility;
+﻿using vermillion.Utility;
 using System;
 using System.Collections.Generic;
 
-namespace redfish.Models
+namespace vermillion.Models
 {
     /// <summary>
     /// Represents a single swap configuration profile

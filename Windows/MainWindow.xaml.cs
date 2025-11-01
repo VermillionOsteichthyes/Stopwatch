@@ -3,13 +3,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic.Logging;
 
-using redfish.Controls;
-using redfish.Database;
-using redfish.Interception;
-using redfish.Interception.Modules;
-using redfish.Models;
-using redfish.Utility;
-using redfish.Windows;
+using vermillion.Controls;
+using vermillion.Database;
+using vermillion.Interception;
+using vermillion.Interception.Modules;
+using vermillion.Models;
+using vermillion.Utility;
+using vermillion.Windows;
 
 using System;
 using System.Collections.Generic;
@@ -41,7 +41,7 @@ using WindivertDotnet;
 
 using Application = System.Windows.Application;
 
-namespace redfish
+namespace vermillion
 {
     public partial class MainWindow : Window
     {

@@ -1,8 +1,8 @@
-﻿using redfish.Controls;
-using redfish.Interception;
-using redfish.Interception.Modules;
-using redfish.Interception.PacketProviders;
-using redfish.Utility;
+﻿using vermillion.Controls;
+using vermillion.Interception;
+using vermillion.Interception.Modules;
+using vermillion.Interception.PacketProviders;
+using vermillion.Utility;
 
 using System;
 using System.Collections.Generic;
@@ -28,7 +28,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 using Path = System.Windows.Shapes.Path;
 
-namespace redfish.Windows
+namespace vermillion.Windows
 {
     public partial class OverlayWindow : Window
     {

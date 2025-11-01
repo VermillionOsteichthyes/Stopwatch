@@ -19,7 +19,7 @@ using WpfSnowfall;
 
 using Rectangle = System.Drawing.Rectangle;
 
-namespace redfish
+namespace vermillion
 {
     public partial class App : System.Windows.Application
     {

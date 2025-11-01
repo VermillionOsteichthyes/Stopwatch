@@ -1,5 +1,5 @@
-﻿using redfish.Interception.Modules;
-using redfish.Interception.PacketProviders;
+﻿using vermillion.Interception.Modules;
+using vermillion.Interception.PacketProviders;
 
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace redfish.Interception
+namespace vermillion.Interception
 {
     public static class InterceptionManager
     {

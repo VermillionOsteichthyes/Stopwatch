@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="redfish.Controls.Checkbox"
+﻿<UserControl x:Class="vermillion.Controls.Checkbox"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:redfish.Controls"
-             xmlns:c="clr-namespace:redfish.Windows.Converters"
+             xmlns:local="clr-namespace:vermillion.Controls"
+             xmlns:c="clr-namespace:vermillion.Windows.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="25" d:DesignWidth="25">
     <Grid>

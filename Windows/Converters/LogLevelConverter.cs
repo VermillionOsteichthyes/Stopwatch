@@ -1,4 +1,4 @@
-﻿using redfish.Database;
+﻿using vermillion.Database;
 
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace redfish.Windows.Converters
+namespace vermillion.Windows.Converters
 {
     public class LogLevelConverter : IValueConverter
     {

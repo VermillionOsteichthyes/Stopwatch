@@ -1,5 +1,5 @@
-﻿using redfish.Interception.Modules;
-using redfish.Models;
+﻿using vermillion.Interception.Modules;
+using vermillion.Models;
 
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace redfish.Interception
+namespace vermillion.Interception
 {
     public class TcpCache
     {

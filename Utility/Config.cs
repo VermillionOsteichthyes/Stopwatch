@@ -1,6 +1,6 @@
-﻿using redfish.Models;
-using redfish.Utility;
-using redfish.Interception;
+﻿using vermillion.Models;
+using vermillion.Utility;
+using vermillion.Interception;
 
 using System;
 using System.Collections.Generic;
@@ -10,12 +10,12 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using redfish.Interception.Modules;
+using vermillion.Interception.Modules;
 using System.Xml.Linq;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace redfish
+namespace vermillion
 {
     public static class Config
     {

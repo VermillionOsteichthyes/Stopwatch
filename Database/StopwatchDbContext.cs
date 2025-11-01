@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace redfish.Database
+namespace vermillion.Database
 {
     public class redfishDbContext : DbContext
     {

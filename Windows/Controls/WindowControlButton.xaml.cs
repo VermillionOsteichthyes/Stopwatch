@@ -1,6 +1,6 @@
 ﻿using OxyPlot.Wpf;
 
-using redfish.Utility;
+using vermillion.Utility;
 
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace redfish.Controls
+namespace vermillion.Controls
 {
     public partial class WindowControlButton : UserControl
     {

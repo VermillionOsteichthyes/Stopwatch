@@ -18,7 +18,7 @@ using System.Windows.Threading;
 
 using static System.Runtime.CompilerServices.RuntimeHelpers;
 
-namespace redfish.Utility
+namespace vermillion.Utility
 {
     public class KeyListener : IDisposable
     {

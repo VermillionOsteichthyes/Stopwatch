@@ -1,7 +1,7 @@
 ﻿using System;
-using static redfish.Interception.TcpCache;
+using static vermillion.Interception.TcpCache;
 
-namespace redfish.Utility
+namespace vermillion.Utility
 {
     public class IdentityChecker
     {
