@@ -39,6 +39,7 @@ namespace vermillion.Interception
             Modules.Add(new PveModule());
             Modules.Add(new MultishotModule());
             Modules.Add(new ReconnectModule());
+            Modules.Add(new WeaselModule());
             Modules.Add(new ResModule());
 
             Modules.Add(new ApiModule());

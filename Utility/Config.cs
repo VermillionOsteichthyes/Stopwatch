@@ -79,6 +79,7 @@ namespace vermillion
                 GetNamed("З0k").Settings["RateLimitingEnabled"] = InstanceModule.RateLimitingEnabled;
                 GetNamed("З0k").Settings["TargetBitsPerSecond"] = InstanceModule.TargetBytesPerSecond;
 
+
                 GetNamed("Multishot").Settings["Inbound"] = MultishotModule.Inbound;
                 GetNamed("Multishot").Settings["Outbound"] = MultishotModule.Outbound;
                 GetNamed("Multishot").Settings["TimeLimit"] = MultishotModule.MaxTime;
