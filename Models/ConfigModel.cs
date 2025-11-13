@@ -68,7 +68,7 @@ namespace vermillion.Models
                 else if (name == "TargetBitsPerSecond")
                     Settings[name] = 1000000L; // Default as long
 
-                Config.Save();
+
             }
 
             if (Settings[name] is JsonElement e)

@@ -43,13 +43,12 @@ namespace vermillion.Interception
 
             //Modules.Add(new MultishotModule());
             Modules.Add(new ReconnectModule());
-            Modules.Add(new PauserModule());
             Modules.Add(new WeaselModule());
             //Modules.Add(new ResModule());
 
             //Modules.Add(new TimerModule());
+            Modules.Add(new PauserModule());
             //Modules.Add(new SoloModule());
-
 
             Modules.Add(new SwapModule());
             //Modules.Add(new TestModule());
