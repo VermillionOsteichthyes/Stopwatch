@@ -88,25 +88,7 @@ namespace vermillion
                 GetNamed("Multishot").Settings["Togglable"] = InterceptionManager.GetModule("Multishot").Togglable;
                 GetNamed("Multishot").Settings["PlayersKeybind"] = MultishotModule.PlayersKeybind;
 
-                // UPDATED: Save profiles instead of individual settings
                 GetNamed("Swap").Settings["Profiles"] = SwapModule.Profiles;
-
-                // OPTIONAL: Keep legacy format for backwards compatibility (will be ignored on load)
-                // This ensures older versions can still read something meaningful
-                if (SwapModule.Profiles.Any())
-                {
-                    var firstProfile = SwapModule.Profiles[0];
-                    GetNamed("Swap").Settings["SwapKeybind"] = firstProfile.Keybind;
-                    GetNamed("Swap").Settings["SwapDuration"] = firstProfile.SwapDuration;
-                    GetNamed("Swap").Settings["SwapDelay"] = firstProfile.SwapDelay;
-                    GetNamed("Swap").Settings["UntickDelay"] = firstProfile.UntickDelay;
-                    GetNamed("Swap").Settings["EndingLoadout"] = firstProfile.EndingLoadout;
-                    GetNamed("Swap").Settings["Port3074"] = firstProfile.Port3074;
-                    GetNamed("Swap").Settings["LoadoutEnabled"] = firstProfile.LoadoutEnabled;
-                    GetNamed("Swap").Settings["Packet3074DL"] = firstProfile.Packet3074DL;
-                    GetNamed("Swap").Settings["AutoDisableBuffering"] = firstProfile.AutoDisableBuffering;
-                    GetNamed("Swap").Settings["CloseInventory"] = firstProfile.CloseInventory;
-                }
 
                 File.WriteAllText(ConfigPath, Instance.Serialize(true));
                 Debug.WriteLine($"Config saved");

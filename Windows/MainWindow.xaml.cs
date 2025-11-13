@@ -135,7 +135,7 @@ namespace vermillion
                 int j = 0;
                 foreach (var m in InterceptionManager.Modules)
                 {
-                    if (m.Name == "Solo" || m.Name == "Timer" || m.Name == "Revive" || m.Name == "Multishot" || m.Name == "Swap")
+                    if (m.Name == "Swap")
                         continue;
 
                     var button = new WindowControlButton()
